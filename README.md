@@ -2,15 +2,6 @@
 
 A 14-question check across vocabulary, grammar and reading. It estimates readiness for an A1 exam (Goethe or ÖSD), breaks the result down by skill, and names the 3 gaps to fix before booking.
 
-## Run it
-
-Open `index.html` in any browser. No install, no API key, no server, no database. Running cost is zero.
-
-## Deploy it free (GitHub Pages)
-
-1. Create a public repo and upload `index.html` and this README.
-2. Go to Settings → Pages → Source: "Deploy from a branch" → branch `main`, folder `/ (root)`.
-3. Your live link is `https://<your-username>.github.io/<repo-name>/`.
 
 ## How readiness is calculated
 
