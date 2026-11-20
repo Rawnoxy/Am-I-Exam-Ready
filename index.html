@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Am I exam-ready? · A1 German</title>
+<style>
+:root{--ink:#1f1b2e;--muted:#6e6880;--lav:#7b5cf5;--lav-mid:#c4b5fd;--lav-soft:#f0ebff;--line:#e9e4f6;--teal:#14866f;--teal-soft:#e3f6f1;--amber:#b45309;--amber-soft:#fff4dc;--rose:#be123c;--rose-soft:#ffe8ee}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:linear-gradient(180deg,#f7f3ff,#fdf4fa)}
+main{max-width:420px;margin:0 auto;padding:22px 18px 48px}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:700;line-height:1.15;margin:0}
+h1{font-size:2.1rem}
+h2{font-size:1.5rem}
+em{color:var(--lav);font-style:normal}
+.muted{color:var(--muted);font-size:.9rem}
+.pill,.verdict{display:inline-block;border-radius:999px;padding:5px 12px;font-size:.85rem;font-weight:700}
+.pill{background:var(--lav-soft);color:var(--lav)}
+.card{background:#fff;border-radius:22px;padding:22px;margin-top:14px;box-shadow:0 8px 24px rgba(60,40,120,.08)}
+.hero{text-align:center}
+.btn{display:block;width:100%;margin-top:14px;padding:15px;border:0;border-radius:16px;background:var(--ink);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.btn:disabled{background:#c9c4d6;cursor:not-allowed}
+.btn.ghost{background:#fff;color:var(--ink);border:2px solid var(--line)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0 14px}
+.tile{background:var(--lav-soft);border-radius:18px;padding:14px 6px;text-align:center;font-size:.85rem}
+.tile b{display:block;font-size:1.7rem}
+.progress{display:flex;gap:4px;margin-top:6px}
+.progress i{flex:1;height:6px;border-radius:3px;background:var(--line)}
+.progress i.done{background:var(--lav)}
+.progress i.now{background:var(--lav-mid)}
+.meta{display:flex;justify-content:space-between;align-items:center;margin:10px 2px 0}
+.passage{background:#faf8ff;border:1px dashed var(--lav-mid);border-radius:14px;padding:12px 14px;margin-bottom:12px}
+.q{font-size:1.6rem;margin:4px 0 10px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 14px;margin:8px 0;border:2px solid var(--line);border-radius:16px;background:#fff;font:inherit;color:var(--ink);cursor:pointer}
+.opt.sel{border-color:var(--lav);background:var(--lav-soft)}
+.chip{flex:0 0 28px;height:28px;border-radius:50%;background:var(--lav-soft);color:var(--lav);display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.opt.sel .chip{background:var(--lav);color:#fff}
+.sure{display:flex;gap:8px;margin-top:8px}
+.sure button{flex:1;padding:11px;border-radius:999px;border:2px solid var(--line);background:#fff;font:inherit;font-weight:600;color:var(--ink);cursor:pointer}
+.sure button.sel{border-color:var(--teal);background:var(--teal-soft);color:var(--teal)}
+.ring{position:relative;width:200px;height:200px;margin:12px auto 0}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .bg{fill:none;stroke:var(--line);stroke-width:12}
+.ring .fg{fill:none;stroke:var(--lav);stroke-width:12;stroke-linecap:round;stroke-dasharray:339.3px;stroke-dashoffset:339.3px;animation:fill 1.2s ease-out forwards}
+.ring.Ready .fg{stroke:var(--teal)}
+.ring.Borderline .fg{stroke:#d97706}
+.ring.Notyet .fg{stroke:var(--rose)}
+@keyframes fill{to{stroke-dashoffset:var(--to)}}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center}
+.ring .num b{font-size:2.8rem;line-height:1}
+.verdict.Ready{background:var(--teal-soft);color:var(--teal)}
+.verdict.Borderline{background:var(--amber-soft);color:var(--amber)}
+.verdict.Notyet{background:var(--rose-soft);color:var(--rose)}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.skill{background:#faf8ff;border-radius:16px;padding:12px 8px}
+.skill b{display:block;font-size:1.2rem;margin:2px 0 8px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--lav)}
+.skill.weak .bar span{background:var(--rose)}
+.note{border-radius:16px;padding:12px 14px;margin-top:12px;font-size:.92rem;text-align:left}
+.gap{background:var(--amber-soft)}
+.cal{background:var(--rose-soft)}
+.step{display:flex;gap:12px;align-items:flex-start;background:#faf8ff;border-radius:16px;padding:12px;margin-top:10px}
+.step .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--lav);color:#fff;display:grid;place-items:center;font-weight:700}
+details{margin-top:14px}
+summary{cursor:pointer;font-weight:700;color:var(--lav)}
+.miss{border-top:1px solid var(--line);padding:12px 0;font-size:.93rem}
+.miss .you{color:var(--rose);margin-top:4px}
+.miss .right{color:var(--teal);font-weight:600}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const LABEL = { Vocab: 'Vocabulary', Grammar: 'Grammar', Reading: 'Reading' };
+const SKILLS = Object.keys(LABEL);
+const TIP_VERB = 'Practise present-tense endings with five common verbs: ich -e, du -st, er/sie -t.';
+const TIP_READ = 'Read short A1 texts and find the answer word (who, where, when) before you look at the options.';
+
+// skill · text (optional passage) · q · opts · a = correct index · why = shown in review · tip = practice advice if missed
+const Q = [
+  { skill:'Vocab', q:'Was ist das Gegenteil von „groß“?', opts:['kurz','klein','alt','billig'], a:1,
+    why:'groß (big) and klein (small) are opposites.',
+    tip:'Learn adjectives in opposite pairs: groß/klein, alt/neu, teuer/billig.' },
+  { skill:'Vocab', q:'Zum Frühstück trinke ich ___.', opts:['Kaffee','Tisch','Buch','Auto'], a:0,
+    why:'Kaffee is a drink. Tisch, Buch and Auto are not.',
+    tip:'Learn nouns in themed groups (food, drinks, travel), not alphabetically.' },
+  { skill:'Vocab', q:'Was bedeutet „der Bahnhof“?', opts:['airport','train station','bakery','hospital'], a:1,
+    why:'der Bahnhof means train station.',
+    tip:'Learn place nouns with their article: der Bahnhof, die Apotheke, das Krankenhaus.' },
+  { skill:'Vocab', q:'Was bedeutet „morgen“?', opts:['yesterday','today','tomorrow','never'], a:2,
+    why:'Lowercase morgen means tomorrow. der Morgen (capital M) means morning.',
+    tip:'Keep morgen (tomorrow) apart from der Morgen (morning). The capital letter tells you which.' },
+  { skill:'Grammar', q:'Ich ___ aus Indien.', opts:['komme','kommst','kommt','kommen'], a:0,
+    why:'With ich, the verb ends in -e.', tip:TIP_VERB },
+  { skill:'Grammar', q:'Er ___ Deutsch.', opts:['lerne','lernst','lernt','lernen'], a:2,
+    why:'With er, the verb ends in -t.', tip:TIP_VERB },
+  { skill:'Grammar', q:'Das ist ___ Buch.', opts:['ein','eine','einen','einer'], a:0,
+    why:'Buch is neuter (das Buch), so the article is ein.',
+    tip:'Learn every noun with its article (das Buch, der Tisch, die Frau) so the endings follow.' },
+  { skill:'Grammar', q:'Ich habe ___ Auto.', opts:['keine','kein','nicht','nichts'], a:1,
+    why:'Use kein to negate a noun: kein Auto means no car.',
+    tip:'Use kein to negate a noun and nicht to negate a verb or adjective.' },
+  { skill:'Grammar', q:'Welcher Satz ist richtig?', opts:['Ich heute gehe ins Kino.','Heute gehe ich ins Kino.','Heute ich gehe ins Kino.','Gehe heute ich ins Kino.'], a:1,
+    why:'The conjugated verb must be in position 2. Heute takes position 1, so gehe comes next, then ich.',
+    tip:'Keep the conjugated verb in position 2, even when a time word starts the sentence.' },
+  { skill:'Grammar', q:'Ich sehe ___ Mann.', opts:['der','den','dem','des'], a:1,
+    why:'Mann is masculine and the direct object, so it takes the accusative den.',
+    tip:'In the accusative only masculine changes (der → den). das and die stay the same.' },
+  { skill:'Reading', text:'Hallo, ich heiße Anna. Ich bin 25 Jahre alt. Ich wohne in Berlin und arbeite als Lehrerin.',
+    q:'Wo wohnt Anna?', opts:['München','Berlin','Wien','Hamburg'], a:1,
+    why:'The text says: Ich wohne in Berlin.', tip:TIP_READ },
+  { skill:'Reading', text:'Mein Bruder heißt Tom. Er ist 10 Jahre alt und spielt sehr gern Fußball.',
+    q:'Was macht Tom gern?', opts:['schwimmen','Fußball spielen','kochen','lesen'], a:1,
+    why:'The text says Tom spielt gern Fußball.', tip:TIP_READ },
+  { skill:'Reading', text:'Das Café ist Montag bis Freitag von 8 bis 18 Uhr geöffnet. Samstags ist es von 9 bis 14 Uhr offen. Sonntags ist es geschlossen.',
+    q:'Ist das Café am Sonntag offen?', opts:['Ja, von 8 bis 18 Uhr','Ja, von 9 bis 14 Uhr','Nein, es ist geschlossen','Ja, von 18 bis 22 Uhr'], a:2,
+    why:'The text says: Sonntags ist es geschlossen.', tip:TIP_READ },
+  { skill:'Reading', text:'Ich fahre morgen mit dem Zug nach Köln. Der Zug fährt um 7 Uhr ab.',
+    q:'Wohin fährt die Person?', opts:['nach Berlin','nach Köln','nach München','nach Hause'], a:1,
+    why:'The text says: mit dem Zug nach Köln.', tip:TIP_READ },
+];
+
+const app = document.getElementById('app');
+let i = 0, answers = [], sel = null, conf = null, res = null;
+const off = c => (339.3 * (1 - c / 100)).toFixed(1) + 'px';
+
+const intro = `
+  <span class="pill">A1 German · readiness check</span>
+  <h1 style="margin-top:14px">Are you <em>exam-ready</em>?</h1>
+  <p class="muted">${Q.length} questions · about 5 minutes · an honest read, not a pass mark</p>
+  <div class="tiles">
+    <div class="tile"><b>🔤</b>Vocabulary</div>
+    <div class="tile"><b>🧩</b>Grammar</div>
+    <div class="tile"><b>📖</b>Reading</div>
+  </div>
+  <p class="muted">Not checked here: listening, writing and speaking.</p>
+  <details>
+    <summary>How the score works</summary>
+    <p class="muted">Readiness = 60% overall accuracy + 40% accuracy in your weakest skill, so one weak skill pulls the score down. "Ready" needs a readiness of 80 or more, at least 70% in every skill, and no more than one confident wrong answer.</p>
+  </details>
+  <button class="btn" data-start>Start check</button>`;
+
+function start(){ i = 0; answers = []; renderQ(); }
+
+function renderQ(){
+  const q = Q[i];
+  sel = null; conf = null;
+  const bars = Q.map((_, k) => `<i class="${k < i ? 'done' : k === i ? 'now' : ''}"></i>`).join('');
+  app.innerHTML = `
+  <div class="progress">${bars}</div>
+  <div class="meta"><span class="muted">${i + 1} of ${Q.length}</span><span class="pill">${LABEL[q.skill]}</span></div>
+  <div class="card">
+    ${q.text ? `<div class="passage">${q.text}</div>` : ''}
+    <h2 class="q">${q.q}</h2>
+    <div>${q.opts.map((o, k) => `<button class="opt" data-k="${k}"><span class="chip">${'ABCD'[k]}</span>${o}</button>`).join('')}</div>
+    <div id="conf" hidden>
+      <div class="muted" style="margin-top:12px">How sure are you?</div>
+      <div class="sure"><button data-c="sure">Sure</button><button data-c="guess">Guessing</button></div>
+    </div>
+  </div>
+  <button class="btn" id="next" data-next disabled>${i === Q.length - 1 ? 'See my result' : 'Next'}</button>`;
+}
+
+function renderLoading(){
+  app.innerHTML = `
+  <div class="card" style="text-align:center">
+    <div class="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="54"/><circle class="fg" cx="60" cy="60" r="54" style="--to:${off(70)}"/></svg></div>
+    <h2 style="margin-top:20px">Checking your <em>answers</em></h2>
+    <p class="muted">Scoring vocabulary, grammar and reading separately.</p>
+  </div>`;
+  setTimeout(renderResult, 1400);
+}
+
+function next(){
+  const q = Q[i];
+  answers.push({ ok: sel === q.a, sure: conf === 'sure', pick: sel, q });
+  i++;
+  if (i < Q.length) return renderQ();
+  renderLoading();
+}
+
+function renderResult(){
+  const by = Object.fromEntries(SKILLS.map(s => [s, { c: 0, n: 0 }]));
+  answers.forEach(a => { by[a.q.skill].n++; if (a.ok) by[a.q.skill].c++; });
+  const acc = s => by[s].c / by[s].n;
+  const overall = answers.filter(a => a.ok).length / answers.length;
+  const weakKey = SKILLS.reduce((a, b) => (acc(b) < acc(a) ? b : a));
+  const weakest = acc(weakKey);
+  const readiness = Math.round((0.6 * overall + 0.4 * weakest) * 100);
+  const sureWrong = answers.filter(a => !a.ok && a.sure).length;
+  const verdict = readiness >= 80 && weakest >= 0.7 && sureWrong <= 1 ? 'Ready'
+                : readiness >= 60 ? 'Borderline' : 'Notyet';
+  const label = { Ready: 'Ready on these skills', Borderline: 'Borderline', Notyet: 'Not yet' }[verdict];
+  const headline = verdict === 'Ready' ? 'You are <em>ready</em> on these skills.'
+                 : verdict === 'Borderline' ? `Close. <em>${LABEL[weakKey]}</em> is holding you back.`
+                 : `Not yet. Start with <em>${LABEL[weakKey]}</em>.`;
+  const tips = [...new Set(answers.filter(a => !a.ok)
+                .sort((x, y) => acc(x.q.skill) - acc(y.q.skill))
+                .map(a => a.q.tip))].slice(0, 3);
+  const misses = answers.filter(a => !a.ok);
+  res = { readiness, label };
+
+  app.innerHTML = `
+  <div class="card hero">
+    <span class="verdict ${verdict}">${label}</span>
+    <div class="ring ${verdict}">
+      <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="54"/><circle class="fg" cx="60" cy="60" r="54" style="--to:${off(readiness)}"/></svg>
+      <div class="num"><div><b>${readiness}</b><div class="muted">out of 100</div></div></div>
+    </div>
+    <h2 style="margin-top:14px">${headline}</h2>
+    <div class="skills">${SKILLS.map(s => `
+      <div class="skill${s === weakKey && acc(s) < 0.7 ? ' weak' : ''}">
+        <div class="muted">${LABEL[s]}</div>
+        <b>${by[s].c} of ${by[s].n}</b>
+        <div class="bar"><span style="width:${acc(s) * 100}%"></span></div>
+      </div>`).join('')}
+    </div>
+    <div class="note gap"><strong>Not covered:</strong> listening, writing and speaking. The official A1 exam tests all four.</div>
+    ${sureWrong ? `<div class="note cal"><strong>Confident mistakes: ${sureWrong}.</strong> Sure and wrong is the riskiest gap, because you would not notice it on your own.</div>` : ''}
+  </div>
+
+  <div class="card">
+    <h2>Your next <em>steps</em></h2>
+    ${tips.length ? tips.map((t, k) => `<div class="step"><span class="n">${k + 1}</span><div>${t}</div></div>`).join('')
+                  : '<p class="muted">No misses. Next, take a full mock that includes listening and writing.</p>'}
+    ${misses.length ? `<details><summary>Review ${misses.length} ${misses.length > 1 ? 'misses' : 'miss'}</summary>
+      ${misses.map(a => `<div class="miss"><div>${a.q.q}</div><div class="you">You picked: ${a.q.opts[a.pick]}</div><div class="right">Correct: ${a.q.opts[a.q.a]}</div><div class="muted">${a.q.why}</div></div>`).join('')}
+    </details>` : ''}
+  </div>
+
+  <button class="btn" data-share>Share my result</button>
+  <button class="btn ghost" data-start>Retake check</button>
+  <p class="muted" style="text-align:center;margin-top:12px">Based on ${answers.length} questions. Treat this as a signal, not a verdict.</p>`;
+}
+
+async function share(el){
+  const text = `My A1 German readiness check: ${res.readiness}/100, ${res.label}. Try yours: ${location.href}`;
+  try {
+    if (navigator.share) return await navigator.share({ title: 'Am I exam-ready?', text });
+    await navigator.clipboard.writeText(text);
+    el.textContent = 'Copied to clipboard';
+  } catch (_) { /* share cancelled or clipboard blocked */ }
+}
+
+app.addEventListener('click', e => {
+  const el = e.target.closest('button');
+  if (!el) return;
+  const d = el.dataset;
+  if ('start' in d) return start();
+  if ('next' in d) return next();
+  if ('share' in d) return share(el);
+  if (!('k' in d) && !('c' in d)) return;
+  if ('k' in d) sel = +d.k;
+  if ('c' in d) conf = d.c;
+  [...el.parentElement.querySelectorAll('button')].forEach(b => b.classList.toggle('sel', b === el));
+  document.getElementById('conf').hidden = sel === null;
+  document.getElementById('next').disabled = sel === null || conf === null;
+});
+
+app.innerHTML = intro;
+</script>
+</body>
+</html>
