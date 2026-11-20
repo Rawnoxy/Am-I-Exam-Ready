@@ -2,6 +2,8 @@
 
 A 14-question check across vocabulary, grammar and reading. It estimates readiness for an A1 exam (Goethe or ÖSD), breaks the result down by skill, and names the 3 gaps to fix before booking.
 
+https://<Rawnoxy>.github.io/<AM-I-Exam-Ready>/
+
 
 ## How readiness is calculated
 
